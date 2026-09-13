@@ -4,6 +4,7 @@ import {
   clearAuth,
   refreshTokenCache,
   saveAccessToken,
+  saveRefreshToken,
 } from '../stores/auth'
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? ''
@@ -32,6 +33,7 @@ async function refreshAccessToken(): Promise<string> {
     { refreshToken },
   )
   saveAccessToken(data.accessToken)
+  saveRefreshToken(data.refreshToken)
   return data.accessToken
 }
 

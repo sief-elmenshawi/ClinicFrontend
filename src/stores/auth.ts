@@ -73,5 +73,10 @@ function decodeUser(token: string): AppUser | null {
 export const accessTokenCache = () => useAuthStore.getState().accessToken
 export const saveAccessToken = (token: string) =>
   useAuthStore.getState().setAccessToken(token)
+export const saveRefreshToken = (token: string) =>
+  useAuthStore.getState().setTokens({
+    accessToken: useAuthStore.getState().accessToken ?? '',
+    refreshToken: token,
+  })
 export const refreshTokenCache = () => useAuthStore.getState().refreshToken
 export const clearAuth = () => useAuthStore.getState().logout()
